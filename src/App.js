@@ -1,10 +1,11 @@
 
-function App() {
+
+function App () {
   return (
-    <div >
-hello
+    <div>
+      Hello
     </div>
-  );
+  )
 }
 
 export default App
