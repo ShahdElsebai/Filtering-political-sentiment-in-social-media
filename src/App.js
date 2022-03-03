@@ -1,10 +1,14 @@
+import { Routes, Route } from 'react-router-dom'
+import Layout from '@Containers/Layout'
 
 
 function App () {
   return (
-    <div>
-      Hello
-    </div>
+    <Routes>
+      <Route path='/' element={<Layout />}>
+      </Route>
+    </Routes>
+
   )
 }
 
