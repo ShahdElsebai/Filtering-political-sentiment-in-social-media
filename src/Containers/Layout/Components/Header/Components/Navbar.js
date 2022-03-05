@@ -25,7 +25,7 @@ const Navbar = () => {
           </StyledLeftContainer>
           <StyledRightContainer>
             <StyledNavbarLinkContainer>
-              <StyledLink to="./">
+              <StyledLink to="./homePage">
                 <NavItem>Home</NavItem>
               </StyledLink>
               <StyledLink to="./aboutUs">

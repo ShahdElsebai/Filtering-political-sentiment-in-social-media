@@ -13,7 +13,7 @@ const SideBar = () => {
 
   return (
     <StyledContainer>
-      <StyledLink to="./">
+      <StyledLink to="./homePage">
         <NavItem fontSize={3} onClick={() => handleUpdate('Home')} selectedValue={selectedItem === 'Home'}>
           Home
         </NavItem>

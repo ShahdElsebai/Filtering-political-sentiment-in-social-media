@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import Layout from '@Containers/Layout'
 import AboutUs from '@Features/AboutUs'
+import HomePage from '@Features/HomePage'
 
 
 function App () {
@@ -8,6 +9,7 @@ function App () {
     <Routes>
       <Route path='/' element={<Layout />}>
         <Route path='/aboutUs' element={<AboutUs/>}/>
+        <Route path='/homePage' element={<HomePage/>}/>
       </Route>
     </Routes>
 
