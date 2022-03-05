@@ -15,7 +15,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <StyledMainContainer>
-      <Flex  height="75px" alignItems="center">
+      <Flex height="75px" alignItems="center">
         <StyledNavbarInnerContainer>
           <StyledLeftContainer>
             <StyledHeader color="text.white">
@@ -83,7 +83,7 @@ const StyledLeftContainer = styled.div`
   flex: 70%;
   display: flex;
   justify-content: flex-start;
- 
+
 `
 const StyledRightContainer = styled.div`
   flex: 30%;
@@ -96,8 +96,7 @@ const StyledNavbarInnerContainer = styled.div`
 `
 const StyledNavbarLinkContainer = styled.div`
   display: flex;
-  justify-content: space-between;
- ;
+  justify-content: space-between;;
   @media (max-width: 900px) {
     display: none;
   }

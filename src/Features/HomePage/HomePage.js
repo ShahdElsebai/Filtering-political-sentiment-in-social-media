@@ -58,7 +58,7 @@ const StyledImage = styled.img`
   width: 150px;
   height: 150px;
   margin-top: 7%;
- 
+
   @media (max-width: 750px) {
     width: 80px;
     height: 80px;
@@ -75,6 +75,7 @@ const StyledButton = styled.button`
   background: rgb(17, 82, 166);
   color: white;
   font-size: 16px;
+
   &:hover {
     background: rgb(164, 198, 245);
     cursor: pointer;

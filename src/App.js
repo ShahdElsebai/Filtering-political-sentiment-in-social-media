@@ -7,9 +7,9 @@ import HomePage from '@Features/HomePage'
 function App () {
   return (
     <Routes>
-      <Route path='/' element={<Layout />}>
-        <Route path='/aboutUs' element={<AboutUs/>}/>
-        <Route path='/homePage' element={<HomePage/>}/>
+      <Route path="/" element={<Layout/>}>
+        <Route path="/aboutUs" element={<AboutUs/>}/>
+        <Route path="/homePage" element={<HomePage/>}/>
       </Route>
     </Routes>
 
