@@ -18,7 +18,7 @@ const Navbar = () => {
       <Flex height="75px" alignItems="center">
         <StyledNavbarInnerContainer>
           <StyledLeftContainer>
-            <StyledHeader color="text.white">
+            <StyledHeader >
               Filter Political Sentiment
             </StyledHeader>
 
@@ -67,7 +67,7 @@ const StyledHeader = styled(Text)`
 `
 const StyledMainContainer = styled.div`
   padding-left: 35px;
-  background-color: #4d4c4c;
+  background-color: #02022f;
   height: 85px;
   width: 100%;
   z-index: 100;
