@@ -19,13 +19,13 @@ const Navbar = () => {
         <StyledNavbarInnerContainer>
           <StyledLeftContainer>
             <StyledHeader >
-              Filter Political Sentiment
+              Filter Political Sentiment From Texts
             </StyledHeader>
 
           </StyledLeftContainer>
           <StyledRightContainer>
             <StyledNavbarLinkContainer>
-              <StyledLink to="./homePage">
+              <StyledLink to="./">
                 <NavItem>Home</NavItem>
               </StyledLink>
               <StyledLink to="./aboutUs">
@@ -60,9 +60,9 @@ const Navbar = () => {
 const StyledHeader = styled(Text)`
   font-family: Raleway, serif;
   color: white;
-  font-size: 40px;
-  @media (max-width: 750px) {
-    font-size: 20px;
+  font-size: 30px;
+  @media (max-width:900px) {
+    font-size: 25px;
   }
 `
 const StyledMainContainer = styled.div`
@@ -72,9 +72,7 @@ const StyledMainContainer = styled.div`
   width: 100%;
   z-index: 100;
   top: 0;
-  @media (max-width: 1000px) {
-    height: 65px;
-  }
+  
   @media (max-width: 450px) {
     height: 85px;
   }
@@ -112,7 +110,7 @@ const NavItem = styled(Box).attrs({
 
   &:hover {
     cursor: pointer;
-    color: #76b4f1;
+    color: rgb(76, 98, 236)
   }
 
 `

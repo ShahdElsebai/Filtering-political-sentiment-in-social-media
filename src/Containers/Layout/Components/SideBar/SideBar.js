@@ -13,7 +13,7 @@ const SideBar = () => {
 
   return (
     <StyledContainer>
-      <StyledLink to="./homePage">
+      <StyledLink to="./">
         <NavItem fontSize={3} onClick={() => handleUpdate('Home')} selectedValue={selectedItem === 'Home'}>
           Home
         </NavItem>
@@ -37,16 +37,10 @@ const StyledContainer = styled.div`
   background-color: #e0ecde;
   display: inline-block;
   align-items: center;
-  top: 185px;
+  top: 500px;
   z-index: 100;
   padding-bottom: 20px;
   //overflow : auto;
-
-  @media (max-width: 900px) {
-    height: 100%;
-    margin-top: 5px;
-
-
 `
 
 

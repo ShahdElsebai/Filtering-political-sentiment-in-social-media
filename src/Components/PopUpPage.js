@@ -15,7 +15,7 @@ export const PopUpPage = ({ open, children, onClose, addCloseIcon }) => {
 const OverlayStyles = styled.div`
 	display: flex;
 	position: fixed;
-	top: 60px;
+	top: 85px;
 	left: 0;
 	right: 0;
 	bottom: 0;
@@ -25,7 +25,7 @@ const OverlayStyles = styled.div`
 		display: none;
 	}
 	@media (max-width: 450px) {
-		top: 80px;
+		top: 85px;
 	}
 `
 

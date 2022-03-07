@@ -3,9 +3,11 @@ import styled from 'styled-components'
 import { Flex, Text, FluidContainer } from '@Components'
 import searchImage from './Assets/images/search.svg'
 import reviewsImage from './Assets/images/reviews.svg'
-
-
+import { CircularProgressbar } from 'react-circular-progressbar'
+import 'react-circular-progressbar/dist/styles.css'
 const HomePage = () => {
+  const percentage = 55
+
   return (
     <FluidContainer mt="100px" p="20px">
       <Flex width="100%" justifyContent="center" >
@@ -28,7 +30,7 @@ const HomePage = () => {
         <StyledDiv>
 
           <StyledInnerContainer>
-            <StyledTextFiled placeholder="Enter text to check political percentage ."/>
+            <StyledTextFiled placeholder="Enter text to check if it's political or not ."/>
             <Flex justifyContent="center">
               <StyledButton>Classify your Text</StyledButton>
             </Flex>
@@ -41,6 +43,18 @@ const HomePage = () => {
             <StyledText>Show the political percentage in the sentence. </StyledText>
           </div>
         </Flex>
+      </Flex>
+      <Flex width="100%" justifyContent="center" mt="30px">
+          {
+            percentage>=50?(<Flex width="100%" justifyContent="center" >
+              <StyledResult color="green">The sentence is political with percentage</StyledResult>
+              <StyledCircularProgressbar value={percentage} text={`${percentage}%`} />
+            </Flex>):(<Flex width="100%" justifyContent="center" >
+            <StyledResult color="red">The sentence is not political.</StyledResult>
+            </Flex>)
+          }
+
+
       </Flex>
     </FluidContainer>
   )
@@ -97,7 +111,6 @@ const StyledButton = styled.button`
   background-color: #02022f;
   color: white;
   font-size: 16px;
-
   &:hover {
     background: rgb(4, 21, 108);
     cursor: pointer;
@@ -152,5 +165,17 @@ const StyledText = styled(Text)`
 const StyledInnerContainerOfImage = styled.div`
   margin-left: 20%;
   
+`
+const StyledCircularProgressbar = styled(CircularProgressbar)`
+  width: 10%;
+`
+
+const StyledResult = styled(Text)`
+  margin: 5% 5% 0 0;
+  font-size: 25px;
+  @media (max-width: 750px) {
+  
+    font-size: 14px;
+  }
 `
 export default HomePage
