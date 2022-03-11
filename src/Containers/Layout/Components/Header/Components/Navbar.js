@@ -19,7 +19,7 @@ const Navbar = () => {
         <StyledNavbarInnerContainer>
           <StyledLeftContainer>
             <StyledHeader >
-              Filter Political Sentiment From Texts
+              Filtering political sentiment from textual information
             </StyledHeader>
 
           </StyledLeftContainer>
@@ -60,9 +60,9 @@ const Navbar = () => {
 const StyledHeader = styled(Text)`
   font-family: Raleway, serif;
   color: white;
-  font-size: 30px;
+  font-size: 25px;
   @media (max-width:900px) {
-    font-size: 25px;
+    font-size: 20px;
   }
 `
 const StyledMainContainer = styled.div`

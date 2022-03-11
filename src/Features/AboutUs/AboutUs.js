@@ -59,8 +59,7 @@ const AboutUs = () => {
             <StyledLeftContainer>
               <Text fontSize="22px" marginLeft="40px">
                 Proposing an approach to filter politically risky sentiments using textual information.
-                The proposed approach aims to detect and
-                prevent malicious political sentiments or
+                The proposed approach aims to detect malicious political sentiments or
                 comments from social media posts,
                 which play an important role in influencing people's and societies sentiments.
               </Text>

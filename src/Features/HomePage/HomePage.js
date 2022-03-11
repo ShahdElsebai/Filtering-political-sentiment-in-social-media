@@ -30,7 +30,7 @@ const HomePage = () => {
         <StyledDiv>
 
           <StyledInnerContainer>
-            <StyledTextFiled placeholder="Enter text to check if it's political or not ."/>
+            <StyledTextFiled placeholder="Enter your text here..."/>
             <Flex justifyContent="center">
               <StyledButton>Classify your Text</StyledButton>
             </Flex>

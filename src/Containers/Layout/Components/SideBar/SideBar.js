@@ -53,12 +53,12 @@ const NavItem = styled(Text).attrs({
   width: '100%',
   height: '44px',
 })`
-  background-color: ${props => (props.selectedValue ? 'black' : 'transparent')};
+  background-color: ${props => (props.selectedValue ? ' #02022f' : 'transparent')};
   color: ${props => (props.selectedValue ? 'white' : 'black')};
 
   &:hover {
     cursor: pointer;
-    background-color: black;
+    background-color: #02022f;
     color: white;
   }
 `
