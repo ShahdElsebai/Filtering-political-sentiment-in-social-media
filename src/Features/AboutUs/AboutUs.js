@@ -9,7 +9,7 @@ import searchImage from './Assets/images/search.svg'
 const AboutUs = () => {
   return (
 
-    <StyledContainer flexDirection={['column', null, 'row']}>
+    <StyledContainer >
       <StyledOuterLeftContainer>
         <StyledCard bg="#F7E6C8">
           <Text fontSize="34px" fontWeight="bold" margin="20px">
