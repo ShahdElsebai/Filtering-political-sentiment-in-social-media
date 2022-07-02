@@ -6,6 +6,7 @@ import HomePage from '@Features/HomePage'
 
 function App () {
   return (
+
     <Routes>
       <Route path="/" element={<Layout/>}>
         <Route path="/aboutUs" element={<AboutUs/>}/>

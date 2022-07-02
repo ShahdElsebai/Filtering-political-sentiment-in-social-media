@@ -5,9 +5,12 @@ import searchImage from './Assets/images/search.svg'
 import reviewsImage from './Assets/images/reviews.svg'
 import { CircularProgressbar } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
+import {useGetSentenceAnalysisQuery} from "../../Redux/projectApi";
+
 const HomePage = () => {
   const percentage = 55
-
+  const { data, error, isloading } = useGetSentenceAnalysisQuery("xx")
+  // console.log({data:  useGetSentenceAnalysisQuery("hello")})
   return (
     <FluidContainer mt="100px" p="20px">
       <Flex width="100%" justifyContent="center" >
@@ -53,8 +56,6 @@ const HomePage = () => {
             <StyledResult color="red">The sentence is not political.</StyledResult>
             </Flex>)
           }
-
-
       </Flex>
     </FluidContainer>
   )
