@@ -31,8 +31,8 @@ const Navbar = () => {
               <StyledLink to="./aboutUs">
                 <NavItem>About Us</NavItem>
               </StyledLink>
-              <StyledLink to="./">
-                <NavItem>Reviews</NavItem>
+              <StyledLink to="./report">
+                <NavItem>Report</NavItem>
               </StyledLink>
             </StyledNavbarLinkContainer>
             <NavItem onClick={toggleExtendNavBar}>
