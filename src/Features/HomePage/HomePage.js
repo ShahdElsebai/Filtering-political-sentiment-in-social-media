@@ -1,64 +1,96 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Text, FluidContainer } from '@Components'
 import searchImage from './Assets/images/search.svg'
 import reviewsImage from './Assets/images/reviews.svg'
-import { CircularProgressbar } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
-import {useGetSentenceAnalysisQuery} from "../../Redux/projectApi";
+import {CircularProgressbar} from 'react-circular-progressbar'
+import {useGetSentenceAnalysisMutation} from "../../Redux/projectApi"
+import {Flex, Text, FluidContainer} from '@Components'
+import {useForm} from "react-hook-form"
 
 const HomePage = () => {
-  const percentage = 55
-  const { data, error, isloading } = useGetSentenceAnalysisQuery("xx")
-  // console.log({data:  useGetSentenceAnalysisQuery("hello")})
-  return (
-    <FluidContainer mt="100px" p="20px">
-      <Flex width="100%" justifyContent="center" >
-        <div>
-          <Flex width="100%" justifyContent="center" mb="20px">
-            <StyledHeaderTitle>Political Sentiment Checker</StyledHeaderTitle>
-          </Flex>
-          <Flex width="100%" justifyContent="center"  >
-            <StyledHeaderp>Check if the sentence is political or not and show the political percentage in it. </StyledHeaderp>
-          </Flex>
-        </div>
-      </Flex>
-      <Flex width="100%" justifyContent="center" ml="4%" >
-        <Flex width="30%" justifyContent="center" mt="30px" >
-          <StyledInnerContainerOfImage>
-            <StyledImage src={searchImage}/>
-            <StyledText>Check if the sentence is political or not . </StyledText>
-          </StyledInnerContainerOfImage>
-        </Flex>
-        <StyledDiv>
+    const [analysis, {data, isLoading, isSuccess}] = useGetSentenceAnalysisMutation()
+    const {
+        register,
+        handleSubmit,
+    } = useForm()
 
-          <StyledInnerContainer>
-            <StyledTextFiled placeholder="Enter your text here..."/>
-            <Flex justifyContent="center">
-              <StyledButton>Classify your Text</StyledButton>
-            </Flex>
-          </StyledInnerContainer>
+    const onSubmit = (textValue) => {
+        analysis(textValue.input)
+    }
 
-        </StyledDiv>
-        <Flex width="30%" justifyContent="center" mt="30px">
-          <div>
-            <StyledImage src={reviewsImage}/>
-            <StyledText>Show the political percentage in the sentence. </StyledText>
-          </div>
-        </Flex>
-      </Flex>
-      <Flex width="100%" justifyContent="center" mt="30px">
-          {
-            percentage>=50?(<Flex width="100%" justifyContent="center" >
-              <StyledResult color="green">The sentence is political with percentage</StyledResult>
-              <StyledCircularProgressbar value={percentage} text={`${percentage}%`} />
-            </Flex>):(<Flex width="100%" justifyContent="center" >
-            <StyledResult color="red">The sentence is not political.</StyledResult>
-            </Flex>)
-          }
-      </Flex>
-    </FluidContainer>
-  )
+    const renderer = () => {
+        if (isLoading) {
+            return (
+                <Flex justifyContent='center' alignItems='center' minHeight='inherit' width='100%'>
+                    <h1>Loading</h1>
+                </Flex>
+            )
+        } else if (isSuccess) {
+            return (
+                <Flex width="100%" justifyContent="center" alignItems='space-between' a mt="30px">
+                    {
+                        data?.text === 'political' ? (<Flex width="100%" justifyContent="center">
+                            <StyledResult color="green">The sentence is political with percentage</StyledResult>
+                            <Flex width="20%" >
+                                <StyledCircularProgressbar value={(data?.summary * 100 ).toFixed(2)}
+                                                           text={`${(data?.summary * 100 ).toFixed(2)}%`}/>
+                            </Flex>
+
+                        </Flex>) : (<Flex width="100%" justifyContent="center">
+                            <StyledResult color="red">The sentence is not political.</StyledResult>
+                        </Flex>)
+                    }
+                </Flex>
+            )
+        }
+    }
+    return (
+        <FluidContainer mt="100px" p="20px">
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <Flex width="100%" justifyContent="center">
+                    <div>
+                        <Flex width="100%" justifyContent="center" mb="20px">
+                            <StyledHeaderTitle>Political Sentiment Checker</StyledHeaderTitle>
+                        </Flex>
+                        <Flex width="100%" justifyContent="center">
+                            <StyledHeaderp>Check if the sentence is political or not and show the political percentage
+                                in it. </StyledHeaderp>
+                        </Flex>
+                    </div>
+                </Flex>
+                <Flex width="100%" justifyContent="center" ml="4%">
+                    <Flex width="30%" justifyContent="center" mt="30px">
+                        <StyledInnerContainerOfImage>
+                            <StyledImage src={searchImage}/>
+                            <StyledText>Check if the sentence is political or not . </StyledText>
+                        </StyledInnerContainerOfImage>
+                    </Flex>
+                    <StyledDiv>
+
+                        <StyledInnerContainer>
+                            <StyledTextFiled required {...register('input', {required: true})}
+                                             placeholder="Enter your text here..."/>
+                            <Flex justifyContent="center">
+                                <StyledButton>Classify your Text</StyledButton>
+                            </Flex>
+                        </StyledInnerContainer>
+
+                    </StyledDiv>
+                    <Flex width="30%" justifyContent="center" mt="30px">
+                        <div>
+                            <StyledImage src={reviewsImage}/>
+                            <StyledText>Show the political percentage in the sentence. </StyledText>
+                        </div>
+                    </Flex>
+                </Flex>
+                <Flex width="100%" justifyContent="center" ml="4%">
+                {renderer()}
+                </Flex>
+            </form>
+
+        </FluidContainer>
+    )
 }
 const StyledTextFiled = styled.textarea`
   border: none;
@@ -82,7 +114,7 @@ const StyledDiv = styled.div`
   box-sizing: border-box;
   box-shadow: 5px 12px 48px rgb(109 117 141 / 20%);
   margin-right: 5%;
- 
+
   @media (max-width: 750px) {
     margin-left: 5%;
 
@@ -112,6 +144,7 @@ const StyledButton = styled.button`
   background-color: #02022f;
   color: white;
   font-size: 16px;
+
   &:hover {
     background: rgb(4, 21, 108);
     cursor: pointer;
@@ -160,22 +193,24 @@ const StyledText = styled(Text)`
     margin-top: 10px;
     font-size: 14px;
   }
- 
+
 `
 
 const StyledInnerContainerOfImage = styled.div`
   margin-left: 20%;
-  
+
 `
 const StyledCircularProgressbar = styled(CircularProgressbar)`
-  width: 10%;
+  width: 35%;
+  height: 100px;
+
 `
 
 const StyledResult = styled(Text)`
-  margin: 5% 5% 0 0;
+  margin: 3% 5% 0 0;
   font-size: 25px;
   @media (max-width: 750px) {
-  
+
     font-size: 14px;
   }
 `

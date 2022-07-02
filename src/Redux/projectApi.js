@@ -9,18 +9,15 @@ export const projectApi = createApi({
         baseQuery,
         tagTypes: ['Posts'],
         endpoints: builder => ({
-            // getSentenceAnalysis: builder.query({
-            //     query:(input)=>({
-            //         url:`MachineLearning?input=${input}`,
-            //         method: 'GET'
-            //     }),
-            //     providesTags: [ 'Posts' ],
-            // })
-            getSentenceAnalysis: builder.query({
-            query: (input) => `MachineLearning?input=${input}`,
-        }),
+            getSentenceAnalysis: builder.mutation({
+                query: (input) => ({
+                    url: `MachineLearning?input=${input}`,
+                    method: 'GET',
+                }),
+                invalidatesTags: ['Posts'],
+            }),
     }),
     }
 )
 
-export const {useGetSentenceAnalysisQuery} = projectApi
+export const {useGetSentenceAnalysisMutation} = projectApi

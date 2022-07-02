@@ -1,6 +1,6 @@
 import React from 'react'
 import {data} from "@Features/ReportPage/data";
-import {Flex, FluidContainer} from "@Components";
+import {Flex} from "@Components";
 import styled from 'styled-components'
 import Table from "../../Components/Table"
 
