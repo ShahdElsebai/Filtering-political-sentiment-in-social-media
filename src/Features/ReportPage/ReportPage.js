@@ -1,5 +1,5 @@
 import React from 'react'
-import {data} from "@Features/ReportPage/data";
+import {dataArray} from "@Features/ReportPage/data";
 import {Flex} from "@Components";
 import styled from 'styled-components'
 import Table from "../../Components/Table"
@@ -7,7 +7,7 @@ import Table from "../../Components/Table"
 const ReportPage = () => {
     return (
         <StyledContainer>
-            <Table loading={false} resultsCount={data.length}>
+            <Table loading={false} resultsCount={dataArray.length}>
                 <Table.Thead>
                     <Table.HeaderRow>
                         <Table.Th>Sentence</Table.Th>
@@ -17,7 +17,7 @@ const ReportPage = () => {
                 </Table.Thead>
                 <tbody>
                 {
-                    data.map(sentence => (
+                    dataArray.map(sentence => (
                         <Table.BodyRow key={sentence.id}>
                             <Table.Td>
                                 <Flex justifyContent='center' alignItems='center'>

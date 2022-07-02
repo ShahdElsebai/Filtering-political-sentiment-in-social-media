@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
 import searchImage from './Assets/images/search.svg'
 import reviewsImage from './Assets/images/reviews.svg'
@@ -7,9 +7,11 @@ import {CircularProgressbar} from 'react-circular-progressbar'
 import {useGetSentenceAnalysisMutation} from "../../Redux/projectApi"
 import {Flex, Text, FluidContainer} from '@Components'
 import {useForm} from "react-hook-form"
+import {dataArray} from "@Features/ReportPage/data";
 
 const HomePage = () => {
     const [analysis, {data, isLoading, isSuccess}] = useGetSentenceAnalysisMutation()
+    const [value, setValue] = useState()
     const {
         register,
         handleSubmit,
@@ -17,8 +19,13 @@ const HomePage = () => {
 
     const onSubmit = (textValue) => {
         analysis(textValue.input)
+        setValue(textValue.input)
     }
-
+useEffect(()=>{
+    if(isSuccess)
+        dataArray.push({text:value, percentage:(data?.summary * 100 ).toFixed(2) })
+    },[data]
+)
     const renderer = () => {
         if (isLoading) {
             return (
@@ -27,6 +34,8 @@ const HomePage = () => {
                 </Flex>
             )
         } else if (isSuccess) {
+
+            console.log(dataArray)
             return (
                 <Flex width="100%" justifyContent="center" alignItems='space-between' a mt="30px">
                     {
