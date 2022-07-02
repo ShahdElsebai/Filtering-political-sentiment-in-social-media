@@ -23,9 +23,9 @@ const SideBar = () => {
           About Us
         </NavItem>
       </StyledLink>
-      <StyledLink to="./">
+      <StyledLink to="./report">
         <NavItem fontSize={3} onClick={() => handleUpdate('Reviews')} selectedValue={selectedItem === 'Reviews'}>
-          Reviews
+         History Report
         </NavItem>
       </StyledLink>
     </StyledContainer>

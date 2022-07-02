@@ -71,4 +71,5 @@ Table.HeaderRow = HeaderRow
 Table.Th = CenteredTh
 Table.BodyRow = BodyRow
 Table.Td = CenteredTd
+
 export default Table

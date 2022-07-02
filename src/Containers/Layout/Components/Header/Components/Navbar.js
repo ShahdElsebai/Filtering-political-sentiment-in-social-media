@@ -32,7 +32,7 @@ const Navbar = () => {
                 <NavItem>About Us</NavItem>
               </StyledLink>
               <StyledLink to="./report">
-                <NavItem>Report</NavItem>
+                <NavItem>History Report</NavItem>
               </StyledLink>
             </StyledNavbarLinkContainer>
             <NavItem onClick={toggleExtendNavBar}>
